@@ -9,7 +9,15 @@ use std::io::Error;
 use std::io::Result;
 use std::io::{BufRead, BufReader, ErrorKind, Write};
 
+fn get_sum2(x: i32, y: i32) -> i32 {
+    x + y
+}
+
 fn main() {
+
+println!("{}", get_sum2(5,4));
+
+
     // println!("What is your name?");
     // let mut name = String::new();
     // let greeting: &str = "Nice to meet you";
@@ -164,9 +172,43 @@ fn main() {
   let st8: String = st6 + &st7;
   println!( "{}", st8);
 
+//enum
+
+enum Day {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+
+impl Day {
+    fn is_weekend(&self) -> bool {
+        match self {
+            Day::Saturday | Day::Sunday => true,
+            _ => false,
+        }
+    }
+}
+
+let today:Day = Day::Monday;
+match today {
+  Day::Monday => println!("Everyone hets Monday"),
+  Day::Tuesday => println!("Donut day"),
+  Day::Wednesday => println!("Hump day"),
+  Day::Thursday => println!("Pay day"),
+  Day::Friday => println!("Almost Weekend"),
+  Day::Saturday => println!("Weekend"),
+  Day::Sunday => println!("Weekend"),
+}
 
 
-  
+println!("Is today the weekend  {}", today.is_weekend());
+
+let result = get_sum2(5, 7);
+println!("The sum is: {}", result);
 
 
 }
