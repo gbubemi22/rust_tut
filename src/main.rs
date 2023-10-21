@@ -1,5 +1,6 @@
 #![allow(unused)]
 
+use rand::prelude;
 use rand::Rng;
 use std::cmp::Ordering;
 use std::fs::File;
@@ -39,8 +40,7 @@ fn main() {
     //Boolean
 
     let is_true: bool = true;
-    let my_grade: char = 'A'; 
-
+    let my_grade: char = 'A';
 
     //Math
 
@@ -68,18 +68,105 @@ fn main() {
 
     //condition
 
-    let age:i32 = 8;
-    if(age >= 1) && (age <= 18) {
+    let age: i32 = 0;
+    if (age >= 1) && (age <= 18) {
         println!("Important Birthday");
-    } else if (age  == 21) || (age == 50) {
+    } else if (age == 21) || (age == 50) {
         println!("Important Birthday");
-    } else if  age >= 65 {
-        println!("Important Birthday"); 
+    } else if age >= 65 {
+        println!("Important Birthday");
     } else {
         println!("Not an Important Birthday");
     }
-    //turnary operator
+    //match
 
-    
-    
+    let age2: i32 = 8;
+    match age2 {
+        1..=18 => println!("important Birthtday"),
+        21 | 50 => println!("important Birthtday"),
+        65..=i32::MAX => println!("important Birthtday"),
+        _ => println!("Not an important Birthtday"),
+    };
+
+    let my_age: i32 = 18;
+    let voting_age: i32 = 18;
+    match my_age.cmp(&voting_age) {
+        Ordering::Less => println!("can't  Vote"),
+        Ordering::Greater => println!("can  Vote"),
+        Ordering::Equal => println!("You gained the right to Vote"),
+    }
+
+    //Arrays
+
+    let arr_1: [i32; 4] = [1, 2, 3, 4];
+    println!("1st : {}", arr_1[0]);
+    println!("Length : {}", arr_1.len());
+
+    //loop an array
+
+    let arr_2: [i32; 9] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mut loop_idx: usize = 0;
+    loop {
+        if arr_2[loop_idx] % 2 == 0 {
+            loop_idx += 1;
+            continue;
+        }
+        if arr_2[loop_idx] == 9 {
+            break;
+        }
+        println!("val  : {}", arr_2[loop_idx]);
+        loop_idx += 1;
+    }
+
+    let arr_3: [i32; 9] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mut loop_idx1: usize = 0;
+
+    while loop_idx1 < arr_3.len() {
+        println!("Arr  : {}", loop_idx1);
+        loop_idx1 += 1;
+    }
+    //tuple
+    let my_tuple: (u8, String, f64) = (47, "Dreake".to_string(), 50_000.00);
+    println!("Name : {}", my_tuple.1);
+    let (v1, v2, v3) = my_tuple;
+
+    println!("Age : {}", v1);
+    let mut st1: String = String::new();
+    st1.push('A'); // Append 'A'
+    st1.push_str(" words"); // Append " words"
+
+    for word in st1.split_whitespace() {
+        println!("{}", word);
+    }
+   let st2: String = st1.replace("A", "Another");
+   println!("{}", st2);
+
+
+   let st3: String = String::from("x,r,t,b,h,k,k,a,m,c");
+
+   let mut v1: Vec<char> = st3.chars().collect();
+   v1.sort();
+   v1.dedup();
+   for ch in &v1 {
+    println!("{}", ch);
+}
+
+   let st4: &str = "Random string";
+   let mut st5: String = st4.to_string();
+   println!("{}", st5);
+
+   let byte_arr1: &[u8] = st5.as_bytes();
+   let st6: &str = &st5[0..6];
+   println!("String lenght : {}", st6.len());
+
+  let st6: String = String::from("Just some");
+  let st7: String = String::from(" words");
+  let st8: String = st6 + &st7;
+  println!( "{}", st8);
+
+
+
+  
+
+
 }
